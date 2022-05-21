@@ -32,7 +32,7 @@ function rotateStringBruteForce(s, goal) {
 function rotateStringBruteForceRecursive(s, goal, swaps) {
     
     if (s === goal) { return true }
-    if (swaps === goal.length) { return false }
+    if (swaps === goal.length-1) { return false }
     
     s = s.slice(1, s.length) + s[0]
     swaps ++;
