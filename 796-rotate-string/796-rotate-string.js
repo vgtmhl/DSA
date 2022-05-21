@@ -1,7 +1,9 @@
 /**
- * @param {string} s
- * @param {string} goal
- * @return {boolean}
+ * brute force: for each iteration, we can move the first letter of s to the end anche check for matches:
+ * (iLikeDogs, DogsiLike) => DogsiLike => ogsiLikeD => gsiLikeDo => siLikeDog => iLikeDogs [MATCH]
+ *
+ * substring match => all rotations of A are contained in A+A, thus we can simply check
+ * if B is a substring of A+A. We also must check for length equality
  */
 
 var rotateString = function(s, goal) {
@@ -11,7 +13,7 @@ var rotateString = function(s, goal) {
     }
     
     
-    return rotateStringBruteForceRecursive(s, goal, 0) 
+    return rotateWithSubstringsCheck(s, goal) 
 };
 
 // brute force iterative
@@ -39,4 +41,15 @@ function rotateStringBruteForceRecursive(s, goal, swaps) {
     
     
     return rotateStringBruteForceRecursive(s, goal, swaps) 
+}
+
+// substring check
+function rotateWithSubstringsCheck(s, goal) {
+    goal = goal.repeat(2)
+    
+    if (goal.includes(s)) {
+        return true
+    }
+    return false
+    
 }
