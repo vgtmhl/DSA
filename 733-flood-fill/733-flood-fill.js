@@ -1,10 +1,3 @@
-/**
- * @param {number[][]} image
- * @param {number} sr
- * @param {number} sc
- * @param {number} newColor
- * @return {number[][]}
- */
 const floodFill = function(image, sr, sc, newColor) {
     let startColor = image[sr][sc]
     
@@ -15,12 +8,6 @@ const floodFill = function(image, sr, sc, newColor) {
     
     while(stack.length) {
         let [curRow, curCol] = stack.pop();
-        
-        // console.log(`
-        // looking at ${curRow};${curCol}
-        // content: ${image[curRow][curCol]}
-        // startColor: ${startColor}
-        // `)
         
         if (image[curRow][curCol] === startColor) {
             image[curRow][curCol] = newColor
@@ -61,13 +48,6 @@ function getNeighbors(image, sr, sc) {
     !isSameCell(right, [sr, sc]) && neighbors.push(right)
     !isSameCell(bottom, [sr, sc]) && neighbors.push(bottom)
     !isSameCell(left, [sr, sc]) && neighbors.push(left)
-    
-    console.log('---')
-    console.log("P: " + sr + ' ' + sc)
-    console.log("I: " + image)
-    console.log("N: " + neighbors)
-    console.log("LR " + lastRowIndex)
-    console.log("LC " + lastColIndex)
     
     return neighbors;
 }
