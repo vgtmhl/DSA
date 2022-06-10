@@ -4,10 +4,10 @@ const floodFill = function(image, sr, sc, newColor) {
     if (startColor === newColor) { return image }
     
     let visited = new Set();
-    let stack = [[sr,sc]]
+    let queue = [[sr,sc]]
     
-    while(stack.length) {
-        let [curRow, curCol] = stack.pop();
+    while(queue.length) {
+        let [curRow, curCol] = queue.shift();
         
         if (image[curRow][curCol] === startColor) {
             image[curRow][curCol] = newColor
@@ -21,7 +21,7 @@ const floodFill = function(image, sr, sc, newColor) {
             if (image[neighbor[0]][neighbor[1]] === startColor &&
                 !visited.has(neighbor)
                ) {
-                    stack.push([neighbor[0], neighbor[1]])
+                    queue.push([neighbor[0], neighbor[1]])
             }
         }
     }
